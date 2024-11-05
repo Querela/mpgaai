@@ -10,9 +10,9 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
  * implementation of {@link Rule}, represents an attribute-require rule,
  * as defined in the config file,
  * <p>
- * syntax:<br />
+ * syntax:<br>
  * {@code <require match="case|nocase|regex" id=
- * "attribute-name">attribute-value</require> }<br />
+ * "attribute-name">attribute-value</require> }<br>
  * {@code <miss match="case|nocase|regex" id=
  * "attribute-name">attribute-value</require> }
  * </p>

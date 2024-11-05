@@ -24,10 +24,10 @@ import de.mpg.aai.security.auth.callback.InterstageSqlCallbackHandler;
  * </p>
  * 
  * <p>
- * <b>NOTE:</b><br />
+ * <b>NOTE:</b><br>
  * this used callbackhandler tries to resolve via an sql query to a database.
  * therefore it - and so this LoginHandler - needs to have the database- &amp;
- * query-options configured!<br />
+ * query-options configured!<br>
  * for details of the parameter please refer to
  * {@link InterstageSqlCallbackHandler}
  * </p>

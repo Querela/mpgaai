@@ -10,13 +10,13 @@ package de.mpg.aai.security.auth;
  * it's a common base exception for all mpgaai security issues, like errors on
  * authentication, authorization, etc...
  * <p>
- * please note:<br />
- * this is an <b>unchecked exception</b>.<br />
- * that follows that all extending exceptions are unchecked!<br />
- * reasoning:<br/>
+ * please note:<br>
+ * this is an <b>unchecked exception</b>.<br>
+ * that follows that all extending exceptions are unchecked!<br>
+ * reasoning:<br>
  * the lines of thoughts were:
  * <ul>
- * <li>in the words of the enterprise spring framework authors<br />
+ * <li>in the words of the enterprise spring framework authors<br>
  * "Checked exceptions are overused in Java. A platform shouldn't force you to
  * catch exceptions you're unlikely to be able to recover from."
  * <li>

@@ -71,14 +71,14 @@ import org.slf4j.LoggerFactory;
  * </p>
  * 
  * <p>
- * example query:<br />
+ * example query:<br>
  * your application specifies users' email address as login-name
  * but you still need to authenticate with the classical uid against krb5 in the
- * background: <br />
+ * background: <br>
  * you can configure the database connection and query to resolve the real
  * username
- * by the entered email-address (as login-name).<br />
- * sample query using variables:<br />
+ * by the entered email-address (as login-name).<br>
+ * sample query using variables:<br>
  * <code>select username from user_table where email = $loginname</code>
  * </p>
  * 

@@ -29,9 +29,9 @@ import org.slf4j.LoggerFactory;
  * <li>$scope : the security-domain part of a scoped-user-ID</li>
  * </ul>
  * <p>
- * an example user query would look like e.g.:<br />
+ * an example user query would look like e.g.:<br>
  * <code>select username,password from user_table where (uid = $username and domain = $scope) or email = $loginname</code>
- * <br />
+ * <br>
  * the prepared-statement query would then be accordingly:
  * <code>select username,password from user_table where (uid = ? and domain = ?) or email = ?</code><br
  * />
