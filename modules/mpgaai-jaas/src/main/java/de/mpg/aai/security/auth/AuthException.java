@@ -26,27 +26,22 @@ package de.mpg.aai.security.auth;
  * and can POSSIBLY handle them, rather to be impelled to treat them immediately  
  * </li>
  * </ul>
- * @see http://www.springsource.org/aboutspring
- * @see "http://www.onjava.com/pub/a/onjava/2003/11/19/exceptions.html"
+ * @see <a href="http://www.springsource.org/aboutspring">About Spring (Source)</a>
+ * @see <a href="http://www.onjava.com/pub/a/onjava/2003/11/19/exceptions.html">Java Exceptions</a>
  * @author megger
  */
 public class AuthException extends RuntimeException {
 	/** @see java.io.Serializable */
 	private static final long serialVersionUID = -1233547086589670569L;
-	
-	
-	/** {@inheritDoc} */
+
 	public AuthException() {
 	}
-	/** {@inheritDoc} */
 	public AuthException(String message) {
 		super(message);
 	}
-	/** {@inheritDoc} */
 	public AuthException(Throwable cause) {
 		super(cause);
 	}
-	/** {@inheritDoc} */
 	public AuthException(String message, Throwable cause) {
 		super(message, cause);
 	}

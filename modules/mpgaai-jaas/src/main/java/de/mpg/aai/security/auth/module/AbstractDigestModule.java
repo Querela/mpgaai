@@ -36,7 +36,7 @@ public abstract class AbstractDigestModule {
 	}
 	
 	/**
-	 * @param digest the digest algorithm
+	 * @param val the digest algorithm
 	 */
 	protected void setDigest(String val) {
 		this.digest = this.ensureValue(val, "SHA");
@@ -50,7 +50,7 @@ public abstract class AbstractDigestModule {
 		}
 	}
 	/**
-	 * @param encoding
+	 * @param val encoding
 	 */
 	protected void setEncoding(String val) {
 		this.encoding = this.ensureValue(val, ENCODING_B64);
@@ -105,8 +105,6 @@ public abstract class AbstractDigestModule {
 	/**
 	 * digests and encodes the given providedPw with the given digest-algorithm in the given encoding 
 	 * @param target provided password to digest and encode
-	 * @param dig destined digest algorithm
-	 * @param enc destined encoding
 	 * @return providedPw digested and encoded 
 	 * @throws NoSuchAlgorithmException if given digest algorithm is not recognized 
 	 * @throws IllegalArgumentException if given encoding is not recognized 

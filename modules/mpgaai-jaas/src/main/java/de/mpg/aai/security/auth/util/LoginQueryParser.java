@@ -19,15 +19,15 @@ import org.slf4j.LoggerFactory;
  * 
  * <p>
  * there is a basic set of variables available one can use in the userQuery:
+ * </p>
  * <ul> 
  * 	<li>$loginname : the "username"/value a user entered when prompted for authentication</li>
  * 	<li>$username : user-identifier part of a scoped userID (the left side of the delimiter)</li>
  * 	<li>$delimiter : value of the delimiter to separate user-identifier from the security domain in a scoped-user-ID</li>
  * 	<li>$scope : the security-domain part of a scoped-user-ID</li>
  * </ul>
- * </p>
  * <p>
- * an example user query would look like e.g:<br />
+ * an example user query would look like e.g.:<br />
  * <code>select username,password from user_table where (uid = $username and domain = $scope) or email = $loginname</code>
  * <br />the prepared-statement query would then be accordingly: 
  * <code>select username,password from user_table where (uid = ? and domain = ?) or email = ?</code><br />
@@ -92,10 +92,7 @@ public class LoginQueryParser {
 	
 	/**
 	 * parses the given query with the given loginname (using the given default-scope and delimiter) 
-	 * @param query the query with variables used to be parsed 
 	 * @param loginName "username" to parse variable-values from which in turn are used in the query (replacing variable-names with their values)  
-	 * @param defaultScope optional: fallback value when no scope found in given loginName 
-	 * @param delimiter optional: delimiter used to parse (split) given loginname in its components
 	 * @return the "prepared query" = the original query but variable-names replaced with "?" for usage in java.sql PreparedStatement
 	 */
 	public String parse(String loginName) {
@@ -124,7 +121,6 @@ public class LoginQueryParser {
 	/**
 	 * provides a mapping of the defined/applicable variables 
 	 * and their positions in the query (used for setting values in a prepared statement)
-	 * @param variables the set of defined/applicable variables
 	 * @see #getVariableMap(String)
 	 */
 	private void initPositionMap() {
@@ -161,9 +157,7 @@ public class LoginQueryParser {
 	 * sets the values of the given map of defined variables 
 	 * to the given prepared statement 
 	 * at the proper positions given by the position-map  
-	 * @param stmt the prepared-statement to set the values into 
-	 * @param varMap mapping of variable-names and their actual values
-	 * @param posMap mapping of variable-names to their actual positions in the given statement (query)  
+	 * @param stmt the prepared-statement to set the values into  
 	 * @throws SQLException
 	 */
 	public void prepareValues(PreparedStatement stmt) 

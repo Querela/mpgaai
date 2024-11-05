@@ -15,7 +15,8 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
  * {@code <miss match="case|nocase|regex" id="attribute-name">attribute-value</require> }
  * </p>
  * 
- * <ul>attributes:
+ * <p>attributes:</p>
+ * <ul>
  * <li>match - mode to match target: see {@link Matcher} </li>
  * <li>id - name of the attribute (which's value have to match)</li>
  * </ul>
@@ -97,7 +98,7 @@ public class Requirement extends Matcher implements Rule {
 	
 	/**
 	 * NOT SUPPORTED! => throws always UnsupportedOperationException
-	 * did'nt want to create separate Rule interface for this only class & method
+	 * did'nt want to create separate Rule interface for this only class &amp; method
 	 * just to differ from all the other rules
 	 * @throws UnsupportedOperationException always
 	 */

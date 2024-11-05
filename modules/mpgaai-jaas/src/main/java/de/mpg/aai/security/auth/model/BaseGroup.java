@@ -14,7 +14,13 @@ public class BaseGroup extends BasePrincipal {
 	
 
 	/**
-	 * {@inheritDoc}
+	 * Constructor.
+	 * 
+	 * Represent a group of principals. (A principal represents an entity such as an individual user or a company).
+	 * 
+	 * Note that Group extends Principal. Thus, either a Principal or a Group can be passed as an argument to methods containing a Principal parameter. For example, you can add either a Principal or a Group to a Group object by calling the object's addMember method, passing it the Principal or Group.
+	 * 
+	 * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html">javadoc for legacy Group interface</a>
 	 */
 	public BaseGroup(String username) {
 		super(username);
@@ -27,7 +33,7 @@ public class BaseGroup extends BasePrincipal {
 	 * @param user the principal to add to this group.
 	 * @return true if the member was successfully added, false if the principal was already a member.
 	 *
-	 * @see https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#addMember-java.security.Principal-
+	 * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#addMember-java.security.Principal-">javadoc for legacy Group interface</a>
 	 */
 	public boolean addMember(Principal user) {
 		// important to check to avoid duplicates 
@@ -46,7 +52,7 @@ public class BaseGroup extends BasePrincipal {
 	 * @param user the principal whose membership is to be checked.
 	 * @return true if the principal is a member of this group, false otherwise.
 	 *
-	 * @see https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#isMember-java.security.Principal-
+	 * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#isMember-java.security.Principal-">javadoc for legacy Group interface</a>
 	 */
 	public boolean isMember(Principal user) {
 		return this.members.contains(user);
@@ -58,7 +64,7 @@ public class BaseGroup extends BasePrincipal {
 	 * 
 	 * @return an enumeration of the group members.
 	 *
-	 * @see https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#members--
+	 * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#members--">javadoc for legacy Group interface</a>
 	 */
 	@SuppressWarnings("unchecked")
 	public Enumeration<? extends Principal> members() {
@@ -72,7 +78,7 @@ public class BaseGroup extends BasePrincipal {
 	 * @param user the principal to remove from this group.
 	 * @return true if the principal was removed, or false if the principal was not a member.
 	 *
-	 * @see https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#removeMember-java.security.Principal-
+	 * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/security/acl/Group.html#removeMember-java.security.Principal-">javadoc for legacy Group interface</a>
 	 */
 	public boolean removeMember(Principal user) {
 		return this.members.remove(user);

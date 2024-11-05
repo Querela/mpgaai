@@ -71,7 +71,7 @@ public class ConfigContext {
 	 * (re)loads the configuration from the config file at {@link #location}
 	 * AND initializes hereafter the services (authn/z handler)
 	 * @see ConfigLoader#load(ConfigContext)
-	 * @see ServiceLoader#load(Configuration) 
+	 * @see ServiceLoader#load(ConfigContext) 
 	 */
 	public void reload() {
 		log.debug("(re)loading configuration, from location {}", this.location);

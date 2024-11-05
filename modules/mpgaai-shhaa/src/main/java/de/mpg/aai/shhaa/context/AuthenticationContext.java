@@ -71,7 +71,7 @@ public class AuthenticationContext extends AbstractReadOnly {
 		return this.identiyProviderID;
 	}
 	/**
-	 * @param identiyProviderID the identiyProviderID to set
+	 * @param idpID the identiyProviderID to set
 	 */
 	public void setIdentiyProviderID(String idpID) {
 		this.checkReadOnly();
@@ -86,7 +86,7 @@ public class AuthenticationContext extends AbstractReadOnly {
 		return this.authnTime;
 	}
 	/**
-	 * @param authnTime the authnTime to set
+	 * @param loginTime the authnTime to set
 	 */
 	public void setLoginTime(Date loginTime) {
 		this.checkReadOnly();
@@ -101,7 +101,7 @@ public class AuthenticationContext extends AbstractReadOnly {
 		return this.subject;
 	}
 	/**
-	 * @param subject the subject to set
+	 * @param user the subject to set
 	 */
 	public void setSubject(Subject user) {
 		this.checkReadOnly();
@@ -144,7 +144,7 @@ public class AuthenticationContext extends AbstractReadOnly {
 	}
 	
 	/**
-	 * @return whether this current context represents a fallback session/user (<=> no valid shib-user/session)
+	 * @return whether this current context represents a fallback session/user (&lt;=&gt; no valid shib-user/session)
 	 */
 	public boolean isFallback() {
 		return this.fallback;

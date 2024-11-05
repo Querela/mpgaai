@@ -30,7 +30,7 @@ public class AuthAttributes extends AbstractReadOnly {
 	/**
 	 * provides the attribute with the given ID
 	 * @param id attribute id/name to look-up/provide
-	 * @return found attribute, <code>null<code> if found none
+	 * @return found attribute, <code>null</code> if found none
 	 */
 	public AuthAttribute<?> get(String id) {
 		return this.elements.get(id);

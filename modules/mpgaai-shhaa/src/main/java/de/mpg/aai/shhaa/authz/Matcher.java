@@ -58,7 +58,7 @@ public abstract class Matcher {
 	 * @param target the string to check 
 	 * @return true if expression matches target
 	 * @see #matchMode
-	 * @see match mode constants
+	 * @see "match mode constants"
 	 * @see #isRegEx()
 	 * @see #isIgnoreCase() 
 	 */

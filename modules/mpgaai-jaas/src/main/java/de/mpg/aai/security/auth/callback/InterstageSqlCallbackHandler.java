@@ -42,6 +42,7 @@ import org.slf4j.LoggerFactory;
  * <p>
  * <b>NOTE: as for the sql resolving: database connection parameter must be configured as options 
  * to the invoking {@link LoginModule}:</b>
+ * </p>
  * <ul>
  * 	<li>jndiName : jndi datasource name to retrieve (pooled) database connection</li>
  * 	<li>jdbcUrl : database URL</li>
@@ -52,7 +53,6 @@ import org.slf4j.LoggerFactory;
  * 	<li>delimiter : (optional) value to separate user-identifier from the security domain in a scoped-user-ID, 
  * 		defaults to '@' if not explicitly configured</li>
  * </ul>
- * </p>
  * 
  * <p>
  * for the configurable (sql)userQuery for resolving 
@@ -70,7 +70,7 @@ import org.slf4j.LoggerFactory;
  * <code>select username from user_table where email = $loginname</code>
  * </p>
  * 
- * <p>example LoginModule JAAS config:<br />
+ * <p>example LoginModule JAAS config:</p>
  * <pre>
  * ShibUserPassAuth {
  *	de.mpg.aai.security.auth.module.StagedSqlKrb5LoginModule required
@@ -84,7 +84,6 @@ import org.slf4j.LoggerFactory;
  *	;
  * };
  * </pre>
- * </p>
  */
 public class InterstageSqlCallbackHandler implements CallbackHandler {
 	/** the logger */

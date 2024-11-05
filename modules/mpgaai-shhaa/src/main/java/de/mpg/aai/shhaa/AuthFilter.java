@@ -119,7 +119,7 @@ public class AuthFilter implements Filter {
 	 * if not found it tries to load the config from this filter's init parameter ({@link #loadConfig(FilterConfig)}).
 	 * <div>{@inheritDoc}</div> 
 	 * @see ConfigContextListener#contextInitialized(javax.servlet.ServletContextEvent)
-	 * @see {@link ConfigContextListener#initConfigContext(ServletContext)
+	 * @see ConfigContextListener#initConfigContext(ServletContext)
 	 */
 	@Override
 	public void init(FilterConfig conf) throws ServletException {

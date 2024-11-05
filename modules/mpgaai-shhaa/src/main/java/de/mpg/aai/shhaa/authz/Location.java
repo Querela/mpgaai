@@ -5,8 +5,7 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
 /**
  * implementation of {@link Rule}, represents a location-authorization rule, as
  * defined in the config file,
- * <p>
- * syntax:
+ * <p>syntax:
  * {@code <location match="case|nocase|regex" target="location-expression">}</p>
  * <div>
  * sample config:
@@ -24,13 +23,13 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
  *			</rule>
  *		</location>
  * }
- * <pre></div>
+ * </pre></div>
  *
  * a location rule always expect a logic-rule as first child,
  * if not found it reverts to {@code <rule logic="AND">}
- *
- * <ul>attributes:
- * <li>match - mode to match target: see {@link Matcher} </li>
+ * <p>attributes:</p>
+ * <ul>
+ * <li>match - mode to match target: see {@link Matcher}</li>
  * <li>target - expression to match (according to match-mode)</li>
  * </ul>
  * @see Matcher

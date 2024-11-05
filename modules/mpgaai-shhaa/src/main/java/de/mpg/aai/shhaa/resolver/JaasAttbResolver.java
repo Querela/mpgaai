@@ -21,7 +21,7 @@ import de.mpg.aai.shhaa.model.AuthAttribute;
  * takes the jaas config file SECTION name from the configuration and invokes jaas:
  * enables client developers to add thus their own implementations to resolve attributes 
  * for the given Subject (and add them as {@link AuthAttribute} to the Subject's public credentials
- * @see http://java.sun.com/javase/6/docs/technotes/guides/security/jaas/JAASRefGuide.html
+ * @see <a href="http://java.sun.com/javase/6/docs/technotes/guides/security/jaas/JAASRefGuide.html">JAAS Reference/Guide</a>
  * @author megger
  *
  */

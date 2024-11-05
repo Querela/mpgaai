@@ -40,7 +40,7 @@ public class AuthenticationHandler implements Configurable {
 	 * determines the current AuthenticationContext data from the given request 
 	 * @param request source to determine the target data from
 	 * @return AuthenticationContext holding data according to given request
-	 * @throws LoginException 
+	 * @throws AuthenticationException 
 	 */
 	public AuthenticationContext loadAuthenticationContext(HttpServletRequest request) throws AuthenticationException {
 		AuthenticationContext result = newContext();

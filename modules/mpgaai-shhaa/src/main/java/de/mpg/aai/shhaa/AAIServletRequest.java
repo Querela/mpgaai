@@ -26,7 +26,6 @@ public class AAIServletRequest extends HttpServletRequestWrapper {
 	/**
 	 * initializing constructor
 	 * @param request the current, original request to wrap
-	 * @param ctx the current request's authentication context
 	 */
 	public AAIServletRequest(HttpServletRequest request) {
 		super(request);

@@ -13,8 +13,10 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
  * <p>syntax: {@code <rule logic="AND|OR">}</p>
  * the attribute 'logic' specifies the behavior of how this rule's child rules ({@link #childRules} 
  * are interpreted during {@link #evaluate(AuthAttributes)}:
- * <ul><li>AND - all (child)rules need to match (themselves evaluate to true) to evaluate (this) to true</li>
- * <li>OR - evaluate true as soon one (child)rule evaluates true</li>
+ * <ul>
+ *   <li>AND - all (child)rules need to match (themselves evaluate to true) to evaluate (this) to true</li>
+ *   <li>OR - evaluate true as soon one (child)rule evaluates true</li>
+ * </ul>
  * @author megger
  */
 public class LogicRule implements Rule {

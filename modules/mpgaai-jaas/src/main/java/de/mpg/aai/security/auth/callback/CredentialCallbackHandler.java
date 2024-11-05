@@ -8,7 +8,7 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 
 
 /**
- * simple {@link CallbackHandler} implementation providing user credentials information: username & password 
+ * simple {@link CallbackHandler} implementation providing user credentials information: username &amp; password 
  * note: his handler only supports {@link NameCallback} and {@link PasswordCallback}.
  * @author megger
  */
@@ -17,9 +17,9 @@ public class CredentialCallbackHandler extends NameCallbackHandler /*implements 
 	private String	passwd;
 	
 	/**
-	 * constructor, initializes user credentials: username & password
-	 * @param username 
-	 * @param passwd
+	 * constructor, initializes user credentials: username &amp; password
+	 * @param uid name
+	 * @param pw password
 	 */
 	public CredentialCallbackHandler(String uid, String pw) {
 		super(uid);

@@ -122,7 +122,7 @@ public class DbConnector {
 		return this.jndiName;
 	}
 	/**
-	 * @param jndiName the jndiName to set
+	 * @param jndiname the jndiName to set
 	 */
 	public void setJndiName(String jndiname) {
 		this.jndiName = jndiname;
@@ -136,7 +136,7 @@ public class DbConnector {
 		return this.jdbcDriver;
 	}
 	/**
-	 * @param jdbcDriver the jdbcDriver to set
+	 * @param driver the jdbcDriver to set
 	 */
 	public void setJdbcDriver(String driver) {
 		this.jdbcDriver = driver;
@@ -150,7 +150,7 @@ public class DbConnector {
 		return this.jdbcUrl;
 	}
 	/**
-	 * @param jdbcUrl the jdbcUrl to set
+	 * @param url the jdbcUrl to set
 	 */
 	public void setJdbcUrl(String url) {
 		this.jdbcUrl = url;
@@ -164,7 +164,7 @@ public class DbConnector {
 		return this.jdbcUser;
 	}
 	/**
-	 * @param jdbcUser the jdbcUser to set
+	 * @param jdbcuser the jdbcUser to set
 	 */
 	public void setJdbcUser(String jdbcuser) {
 		this.jdbcUser = jdbcuser;
@@ -178,7 +178,7 @@ public class DbConnector {
 		return this.jdbcPassword;
 	}
 	/**
-	 * @param jdbcPassword the jdbcPassword to set
+	 * @param jdbcpw the jdbcPassword to set
 	 */
 	public void setJdbcPassword(String jdbcpw) {
 		this.jdbcPassword = jdbcpw;

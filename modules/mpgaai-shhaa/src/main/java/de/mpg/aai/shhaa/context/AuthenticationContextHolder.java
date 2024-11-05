@@ -36,7 +36,7 @@ public class AuthenticationContextHolder {
 	 * @param request request to lookup the AuthenticationContext in
 	 * @return AuthenticationContext found in the given request's session, null if not found
 	 * @see #get(HttpSession)
-	 * @see #put(HttpSession, AuthenticationContext)
+	 * @see #put(HttpServletRequest, AuthenticationContext)
 	 */
 	public static AuthenticationContext get(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -50,7 +50,7 @@ public class AuthenticationContextHolder {
 	 * @param session session to lookup the AuthenticationContext in
 	 * @return AuthenticationContext found in the given session, null if not found
 	 * @see #get(HttpSession)
-	 * @see #put(HttpSession, AuthenticationContext)
+	 * @see #put(HttpServletRequest,AuthenticationContext)
 	 */
 	public static AuthenticationContext get(HttpSession session) {
 		return (AuthenticationContext) session.getAttribute(AuthenticationContext.class.getName());
