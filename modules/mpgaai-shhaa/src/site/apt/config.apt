@@ -448,7 +448,7 @@ SHHAA Filter Configuration
    *<<<\<pages/\>>>>\
    <optional>\
    represents a basic kind of "view control" of shhaa:\
-   shhaa can display (forward to) own views/sites instead of the orignal request(ed site) 
+   shhaa can display (forward to) own views/sites instead of the original request(ed site) 
    for the purpose of user-notification on certain conditions:\
    initial (SSO) login, logged-out or session-change, and access-denied\
    there are three special configuration for each of this use-cases: 

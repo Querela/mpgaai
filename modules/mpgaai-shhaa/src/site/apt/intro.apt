@@ -151,8 +151,8 @@ SHHAA - A Simple Access Control Filter
   
   * auto-login:\
   if a protected location is (tried to) access,\
-  shhaa will automatically redirect to the (configred) SSO login site;\
-  after a successfull authentication there, the site-flow should come back to the orignal request
+  shhaa will automatically redirect to the (configured) SSO login site;\
+  after a successfull authentication there, the site-flow should come back to the original request
   
   * auto-recognition of login-status:\
   as said shhaa relies fully on the SSO login provided by the Shibboleth Service Provider an its AAI system behind;\
