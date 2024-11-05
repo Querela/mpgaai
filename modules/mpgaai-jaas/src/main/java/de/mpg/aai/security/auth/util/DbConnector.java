@@ -14,72 +14,72 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * simple bean holding db-connection configuration parameter 
- * and providing the (java.sql)Connection 
+ * simple bean holding db-connection configuration parameter
+ * and providing the (java.sql)Connection
  *
- * @author	last modified by $Author$, created by megger
- * @version	$Revision$
+ * @author last modified by $Author$, created by megger
+ * @version $Revision$
  */
 public class DbConnector {
 	/** the logger */
-	private static Logger	_log = LoggerFactory.getLogger(DbConnector.class);
+	private static Logger _log = LoggerFactory.getLogger(DbConnector.class);
 
 	/** name of the jndi datasource to acquire database-connection from */
-	private String	jndiName		= null;
-	/** jdbc driver name to be used*/
-	private String  jdbcDriver;
+	private String jndiName = null;
+	/** jdbc driver name to be used */
+	private String jdbcDriver;
 	/** the database url */
-	private String	jdbcUrl			= null;
+	private String jdbcUrl = null;
 	/** the database-user */
-	private String	jdbcUser		= null;
+	private String jdbcUser = null;
 	/** password of the database-user */
-	private String	jdbcPassword	= null;
-	
-	
+	private String jdbcPassword = null;
+
 	/**
 	 * default constructor
 	 */
 	public DbConnector() {
 	}
-	
-	public DbConnector(Map<String,String>  options) throws ConfigurationException {
+
+	public DbConnector(Map<String, String> options) throws ConfigurationException {
 		this.init(options);
 	}
-	
-	
+
 	/**
 	 * initializes member variables by the given options
+	 * 
 	 * @param options options-map to initialize this instance's configuration.
-	 * parameter are: 
-	 * <ul>
-	 * <li>jndiName</li>
-	 * <li>jdbcDriver</li>
-	 * <li>jdbcUser</li>
-	 * <li>jdbcPassword</li>
-	 * </ul>
+	 *                parameter are:
+	 *                <ul>
+	 *                <li>jndiName</li>
+	 *                <li>jdbcDriver</li>
+	 *                <li>jdbcUser</li>
+	 *                <li>jdbcPassword</li>
+	 *                </ul>
 	 */
-	public void init(Map<String,String>  options) throws ConfigurationException {
+	public void init(Map<String, String> options) throws ConfigurationException {
 		this.setJndiName(options.get("jndiName"));
 		this.setJdbcDriver(options.get("jdbcDriver"));
 		this.setJdbcUrl(options.get("jdbcUrl"));
 		this.setJdbcUser(options.get("jdbcUser"));
 		this.setJdbcPassword(options.get("jdbcPassword"));
-		
-		if(!this.isEmpty(this.jdbcUrl)) {
-			if(this.isEmpty(this.jdbcDriver))
+
+		if (!this.isEmpty(this.jdbcUrl)) {
+			if (this.isEmpty(this.jdbcDriver))
 				throw new ConfigurationException("no 'jdbcDriver' configured");
-			if(this.isEmpty(this.jdbcUser))
+			if (this.isEmpty(this.jdbcUser))
 				_log.warn("no 'jdbcUser' configured");
-			if(this.isEmpty(this.jdbcPassword))
+			if (this.isEmpty(this.jdbcPassword))
 				_log.warn("no 'jdbcPassword' configured");
-		} else if(this.isEmpty(this.jndiName))
-			throw new ConfigurationException("no database connection parameter configured, expecting one of 'jndiName'|'jdbcDriver'");
+		} else if (this.isEmpty(this.jndiName))
+			throw new ConfigurationException(
+					"no database connection parameter configured, expecting one of 'jndiName'|'jdbcDriver'");
 	}
-	
-	
+
 	/**
 	 * provides the configured database connection
-	 * @return Connection 
+	 * 
+	 * @return Connection
 	 * @throws NamingException
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
@@ -88,13 +88,13 @@ public class DbConnector {
 		Connection result = null;
 		String jndi = this.getJndiName();
 		// jdbc mode
-		if(this.isEmpty(jndi)) {
+		if (this.isEmpty(jndi)) {
 			String url = this.getJdbcUrl();
 			_log.debug("connecting (jdbc) to db " + url);
-			Class.forName(this.jdbcDriver);	// load driver first
+			Class.forName(this.jdbcDriver); // load driver first
 			result = DriverManager.getConnection(url, this.getJdbcUser(), this.getJdbcPassword());
 		} else {
-			// jndi-mode: get connection from datasource 
+			// jndi-mode: get connection from datasource
 			_log.debug("connecting (jndi) to db datasource" + jndi);
 			Context ctx = new InitialContext();
 			DataSource ds = (DataSource) ctx.lookup(jndi);
@@ -103,10 +103,10 @@ public class DbConnector {
 		_log.debug("connected to db " + result.getMetaData().getURL());
 		return result;
 	}
-	
-	
+
 	/**
 	 * little helper to identify empty-or-null strings
+	 * 
 	 * @param val the string to be checked
 	 * @return true if given string is null or empty or represents whitespaces only
 	 */
@@ -114,74 +114,74 @@ public class DbConnector {
 		return val == null || val.trim().isEmpty();
 	}
 
-	
 	/**
 	 * @return the jndiName
 	 */
 	public String getJndiName() {
 		return this.jndiName;
 	}
+
 	/**
 	 * @param jndiname the jndiName to set
 	 */
 	public void setJndiName(String jndiname) {
 		this.jndiName = jndiname;
 	}
-	
-	
+
 	/**
 	 * @return the jdbcDriver
 	 */
 	public String getJdbcDriver() {
 		return this.jdbcDriver;
 	}
+
 	/**
 	 * @param driver the jdbcDriver to set
 	 */
 	public void setJdbcDriver(String driver) {
 		this.jdbcDriver = driver;
 	}
-	
-	
+
 	/**
 	 * @return the jdbcUrl
 	 */
 	public String getJdbcUrl() {
 		return this.jdbcUrl;
 	}
+
 	/**
 	 * @param url the jdbcUrl to set
 	 */
 	public void setJdbcUrl(String url) {
 		this.jdbcUrl = url;
 	}
-	
-	
+
 	/**
 	 * @return the jdbcUser
 	 */
 	public String getJdbcUser() {
 		return this.jdbcUser;
 	}
+
 	/**
 	 * @param jdbcuser the jdbcUser to set
 	 */
 	public void setJdbcUser(String jdbcuser) {
 		this.jdbcUser = jdbcuser;
 	}
-	
-	
+
 	/**
 	 * @return the jdbcPassword
 	 */
 	public String getJdbcPassword() {
 		return this.jdbcPassword;
 	}
+
 	/**
 	 * @param jdbcpw the jdbcPassword to set
 	 */
 	public void setJdbcPassword(String jdbcpw) {
 		this.jdbcPassword = jdbcpw;
 	}
-	
+
 }

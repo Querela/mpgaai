@@ -5,10 +5,13 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
 /**
  * implementation of {@link Rule}, represents a location-authorization rule, as
  * defined in the config file,
- * <p>syntax:
- * {@code <location match="case|nocase|regex" target="location-expression">}</p>
+ * <p>
+ * syntax:
+ * {@code <location match="case|nocase|regex" target="location-expression">}
+ * </p>
  * <div>
  * sample config:
+ * 
  * <pre>
  * {@code
  *		<location match="regex" target="/protected/.*" >
@@ -23,15 +26,20 @@ import de.mpg.aai.shhaa.model.AuthAttributes;
  *			</rule>
  *		</location>
  * }
- * </pre></div>
+ * </pre>
+ * 
+ * </div>
  *
  * a location rule always expect a logic-rule as first child,
  * if not found it reverts to {@code <rule logic="AND">}
- * <p>attributes:</p>
+ * <p>
+ * attributes:
+ * </p>
  * <ul>
  * <li>match - mode to match target: see {@link Matcher}</li>
  * <li>target - expression to match (according to match-mode)</li>
  * </ul>
+ * 
  * @see Matcher
  * @author megger
  *
@@ -57,12 +65,12 @@ public class Location extends Matcher implements Rule {
      * expression, matching any method
      *
      * @param path the location expression to match (with the request's destined
-     * location)
+     *             location)
      * @param mode intended match mode to match (with the request's destined
-     * location)
+     *             location)
      */
     public Location(String path, String mode) {
-        this(path, mode, new String[]{});
+        this(path, mode, new String[] {});
     }
 
     public Location(String path, String[] methods) {
@@ -73,12 +81,12 @@ public class Location extends Matcher implements Rule {
      * constructor, initializes this Location with the given target("path")
      * expression and the intended match-mode, matching the specified method(s)
      *
-     * @param path the location expression to match (with the request's destined
-     * location)
-     * @param mode intended match mode to match (with the request's destined
-     * location)
+     * @param path    the location expression to match (with the request's destined
+     *                location)
+     * @param mode    intended match mode to match (with the request's destined
+     *                location)
      * @param methods http methods (space separated) to match (empty string for
-     * all)
+     *                all)
      * @see Matcher#Matcher(String)
      * @see Matcher#MATCHMODE_CASE_SENSITIVE
      * @see Matcher#MATCHMODE_CASE_IGNORE
@@ -102,7 +110,7 @@ public class Location extends Matcher implements Rule {
      *
      * @param path to (try/check to) match
      * @return true if given path matches this location's {@link #target}
-     * according to its {@link Matcher#matchMode}
+     *         according to its {@link Matcher#matchMode}
      */
     public boolean matchesPath(String path) {
         return super.matches(this.target, path);
@@ -112,7 +120,7 @@ public class Location extends Matcher implements Rule {
      *
      * @param method to match
      * @return true if the list of accepted methods is empty or one of the items
-     * matches the specified method
+     *         matches the specified method
      */
     public boolean matchesMethod(String method) {
         if (this.methods.length == 0) {
@@ -136,7 +144,7 @@ public class Location extends Matcher implements Rule {
     public boolean evaluate(AuthAttributes credentials) {
         return this.topRule != null
                 ? this.topRule.evaluate(credentials)
-                : true;	// no rules at all => validate true
+                : true; // no rules at all => validate true
     }
 
     /**
@@ -162,7 +170,7 @@ public class Location extends Matcher implements Rule {
             this.topRule.addRule(rule);
             return;
         }
-        // need logic-rule as root: 
+        // need logic-rule as root:
         // if not there yet: use given LogicRule
         if (rule instanceof LogicRule) {
             this.topRule = (LogicRule) rule;

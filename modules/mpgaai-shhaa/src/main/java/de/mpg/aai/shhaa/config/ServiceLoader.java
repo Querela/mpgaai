@@ -8,28 +8,28 @@ import de.mpg.aai.shhaa.authz.AuthorizationHandler;
 import de.mpg.aai.shhaa.resolver.AttributeResolverHandler;
 import de.mpg.aai.shhaa.resolver.ShibHeaderAttbResolver;
 
-
 /**
- * service factory: 
+ * service factory:
  * loads the services as specified in the configuration
+ * 
  * @author megger
  */
 public class ServiceLoader {
-	
+
 	/**
 	 * default constructor
 	 */
 	public ServiceLoader() {
 	}
-	
-	
+
 	/**
-	 * builds/loads the services according to the configuration 
+	 * builds/loads the services according to the configuration
+	 * 
 	 * @param configCtx context providing the current config
 	 * @return HttpAuthService instance as configured - the main authn/z handler
 	 */
 	static HttpAuthService load(ConfigContext configCtx) {
-		// TODO make this configurable 
+		// TODO make this configurable
 		Configuration config = configCtx.getConfiguration();
 		final HttpAuthService result = new HttpAuthService();
 		result.setAuthnCtxHandler(loadAuthenticationCtxHandler(config));
@@ -38,9 +38,10 @@ public class ServiceLoader {
 		result.setConfig(config);
 		return result;
 	}
-	
+
 	/**
-	 * builds/loads the authentication handler according to the configuration 
+	 * builds/loads the authentication handler according to the configuration
+	 * 
 	 * @param conf the current configuration
 	 * @return AuthenticationHandler instance as configured
 	 */
@@ -51,9 +52,11 @@ public class ServiceLoader {
 		result.setConfig(conf);
 		return result;
 	}
-	
+
 	/**
-	 * builds/loads the attribute composition handler (resolver) according to the configuration 
+	 * builds/loads the attribute composition handler (resolver) according to the
+	 * configuration
+	 * 
 	 * @param conf the current configuration
 	 * @return AttributeResolverHandler instance as configured
 	 */
@@ -63,9 +66,10 @@ public class ServiceLoader {
 		result.setConfig(conf);
 		return result;
 	}
-	
+
 	/**
-	 * builds/loads the authorization handler according to the configuration 
+	 * builds/loads the authorization handler according to the configuration
+	 * 
 	 * @param conf the current configuration
 	 * @return AuthorizationHandler instance as configured
 	 */

@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 public class HttpHeaderUtils {
 
     private static Logger log = LoggerFactory.getLogger(HttpHeaderUtils.class);
-    
+
     public static String decodeHeaderValue(String name, String value) {
         if (value == null) {
             return null;
@@ -35,7 +35,8 @@ public class HttpHeaderUtils {
         try {
             return new String(value.getBytes("ISO8859-1"), "UTF-8");
         } catch (UnsupportedEncodingException ex) {
-            log.error(String.format("Failed to decode header [%s] value [%s] as UTF-8. Error=%s.", name, value, ex.getMessage()));
+            log.error(String.format("Failed to decode header [%s] value [%s] as UTF-8. Error=%s.", name, value,
+                    ex.getMessage()));
             log.debug("Stacktrace:", ex);
         }
         return value;

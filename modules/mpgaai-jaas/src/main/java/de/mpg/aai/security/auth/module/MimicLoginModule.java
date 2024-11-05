@@ -22,43 +22,44 @@ import javax.security.auth.spi.LoginModule;
 import de.mpg.aai.security.auth.model.BasePrincipal;
 
 /**
- * simple LoginModule "for administrators" to login as mimic on behalf of other user(account)s:
- * takes an encrypted string as config parameter as password for successful authentication
+ * simple LoginModule "for administrators" to login as mimic on behalf of other
+ * user(account)s:
+ * takes an encrypted string as config parameter as password for successful
+ * authentication
+ * 
  * @author megger
  *
  */
 public class MimicLoginModule extends AbstractDigestModule implements LoginModule {
 	/** identity container */
-	private Subject			subject;
+	private Subject subject;
 	/** actual user to authenticate */
-	private Principal		user;
+	private Principal user;
 	/** handler providing user credentials */
-	private CallbackHandler	handler;
+	private CallbackHandler handler;
 	/** configured mimic pw */
-	private String			secret;
-	
-	
+	private String secret;
+
 	/**
 	 * default constructor
 	 */
 	public MimicLoginModule() {
 	}
-	
-	
+
 	/** {@inheritDoc} */
 	@SuppressWarnings("unused")
 	@Override
-	public void initialize(Subject subj, CallbackHandler callbackHandler, Map<String, ?> sharedState, Map<String, ?> options) {
+	public void initialize(Subject subj, CallbackHandler callbackHandler, Map<String, ?> sharedState,
+			Map<String, ?> options) {
 		this.subject = subj;
 		this.handler = callbackHandler;
 		this.init(options);
 		String val = (String) options.get("secret");
 		this.secret = val != null ? val.trim() : null;
-		if(this.secret == null || this.secret.isEmpty())
+		if (this.secret == null || this.secret.isEmpty())
 			throw new IllegalArgumentException("secret must not be null/empty");
 	}
-	
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public boolean login() throws LoginException {
@@ -69,59 +70,55 @@ public class MimicLoginModule extends AbstractDigestModule implements LoginModul
 		callbacks[1] = new PasswordCallback("Password", false);
 		try {
 			this.handler.handle(callbacks);
-		} catch(IOException ioe) {
-			throw(LoginException) new LoginException().initCause(ioe);
-		} catch(UnsupportedCallbackException uce) {
-			throw(LoginException) new LoginException().initCause(uce);
+		} catch (IOException ioe) {
+			throw (LoginException) new LoginException().initCause(ioe);
+		} catch (UnsupportedCallbackException uce) {
+			throw (LoginException) new LoginException().initCause(uce);
 		}
 		String loginName = ((NameCallback) callbacks[0]).getName();
-		if(loginName == null || loginName.trim().isEmpty()) {
+		if (loginName == null || loginName.trim().isEmpty()) {
 			throw new AccountException("no login name provided");
 		}
 		char[] provided = ((PasswordCallback) callbacks[1]).getPassword();
 		String providedPw = provided != null ? new String(provided) : null;
-		if(!this.check(this.secret, providedPw))
+		if (!this.check(this.secret, providedPw))
 			throw new FailedLoginException();
-		
+
 		this.user = new BasePrincipal(loginName);
 		return true;
 	}
-	
-	
+
 	/** {@inheritDoc} */
 	@Override
-	public boolean commit() /*throws LoginException*/ {
-		if(this.isLoginSucceeded())
+	public boolean commit() /* throws LoginException */ {
+		if (this.isLoginSucceeded())
 			this.subject.getPrincipals().add(this.user);
 		else
 			this.clearState();
 		return true;
 	}
-	
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public boolean logout() throws LoginException {
 		// remove principals added by this LoginModule
-		if(this.isLoginSucceeded()) {
-			if(this.subject.isReadOnly())
-				throw new LoginException ("Subject is read-only");
+		if (this.isLoginSucceeded()) {
+			if (this.subject.isReadOnly())
+				throw new LoginException("Subject is read-only");
 			this.subject.getPrincipals().remove(this.user);
 		}
-//		this.clearState();
+		// this.clearState();
 		return true;
 	}
-	
-	
+
 	/** {@inheritDoc} */
-//	@Override
-	public boolean abort() /*throws LoginException*/ {
-		if(this.isLoginSucceeded())
+	// @Override
+	public boolean abort() /* throws LoginException */ {
+		if (this.isLoginSucceeded())
 			this.clearState();
 		return true;
 	}
-	
-	
+
 	/**
 	 * resets the current status: {@link #user} and {@link #loginSucceeded}
 	 */
@@ -130,7 +127,7 @@ public class MimicLoginModule extends AbstractDigestModule implements LoginModul
 		this.handler = null;
 		this.user = null;
 	}
-	
+
 	/**
 	 * @return true if a (logged in) user exists
 	 */
@@ -140,8 +137,9 @@ public class MimicLoginModule extends AbstractDigestModule implements LoginModul
 
 	/**
 	 * encodes with given digest algorithm and given encoding the given secret:
-	 * @param args [digest, encoding, secret] 
-	 * @throws NoSuchAlgorithmException 
+	 * 
+	 * @param args [digest, encoding, secret]
+	 * @throws NoSuchAlgorithmException
 	 */
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 		MimicLoginModule mod = new MimicLoginModule();
