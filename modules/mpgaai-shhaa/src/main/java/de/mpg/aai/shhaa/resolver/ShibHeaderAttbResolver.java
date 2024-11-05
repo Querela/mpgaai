@@ -102,7 +102,7 @@ public class ShibHeaderAttbResolver implements AttributeResolverModule, Configur
 				log.trace("found no values for attribute {}", targetID);
 			else 
 				credentials.add(cred);
-			log.trace("added attribute {} with {} values", targetID, new Integer(cred.size()));
+			log.trace("added attribute {} with {} values", targetID, Integer.valueOf(cred.size()));
 		}
 	}
 	

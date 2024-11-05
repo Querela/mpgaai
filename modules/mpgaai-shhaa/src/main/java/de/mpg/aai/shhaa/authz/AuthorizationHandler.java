@@ -69,7 +69,7 @@ public class AuthorizationHandler implements Configurable {
 		List<Location> locations = this.getLocationRules(path, request.getMethod());
 		// normally there should be only one location(rule-set) per path
 		if(locations.size() > 1)
-			log.info("found multiple location rules ({}) for single path {}", new Integer(locations.size()), path);
+			log.info("found multiple location rules ({}) for single path {}", Integer.valueOf(locations.size()), path);
 		log.trace("found matching rules {}", locations.toString());
 		this.checkRequirements(authCtx, locations);
 	}

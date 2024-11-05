@@ -141,7 +141,7 @@ public class LoginQueryParser {
 				last = query.indexOf(var, last);
 				if(last < 0)
 					break;
-				positions.add(new Integer(pos++));	// increment only when actually found & added
+				positions.add(Integer.valueOf(pos++));	// increment only when actually found & added
 			}
 			// map only variables actually used
 			if(positions.isEmpty())	// variable not used

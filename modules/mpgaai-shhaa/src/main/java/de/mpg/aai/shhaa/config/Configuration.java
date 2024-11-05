@@ -1,6 +1,8 @@
 package de.mpg.aai.shhaa.config;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -266,8 +268,8 @@ public class Configuration {
 			return;
 		}
 		try {
-			this.host = new URL(hostname);
-		} catch (MalformedURLException muE) {
+			this.host = new URI(hostname).toURL();
+		} catch (MalformedURLException | URISyntaxException muE) {
 			throw new ConfigurationException("failed to set hostname", muE);
 		}
 
@@ -365,9 +367,9 @@ public class Configuration {
 	 */
 	public void setSSO(String url, String action)  throws ConfigurationException {
 		try {
-			this.sso = new URL(url);
+			this.sso = new URI(url).toURL();
 			this.ssoAction = this.ensureVal(action);
-		} catch (MalformedURLException muE) {
+		} catch (MalformedURLException | URISyntaxException muE) {
 			throw new ConfigurationException("failed to set SSO-url", muE);
 		}
 	}
@@ -401,9 +403,9 @@ public class Configuration {
 	 */
 	public void setSLO(String url, String action)  throws ConfigurationException {
 		try {
-			this.slo = new URL(url);
+			this.slo = new URI(url).toURL();
 			this.sloAction = this.ensureVal(action);
-		} catch (MalformedURLException muE) {
+		} catch (MalformedURLException | URISyntaxException muE) {
 			throw new ConfigurationException("failed to set SLO-url", muE);
 		}
 	}

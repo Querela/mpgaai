@@ -2,6 +2,8 @@ package de.mpg.aai.shhaa;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import javax.servlet.Filter;
@@ -24,8 +26,7 @@ import de.mpg.aai.shhaa.config.ConfigContextListener;
 import de.mpg.aai.shhaa.config.ConfigurationException;
 import de.mpg.aai.shhaa.context.AuthenticationContext;
 import java.nio.charset.Charset;
-import java.util.Collections;
-import java.util.Enumeration;
+
 
 /**
  * servlet filter implementation,
@@ -167,12 +168,12 @@ public class AuthFilter implements Filter {
 			ServletContext servletCtx = conf.getServletContext();
 			URL locURL = location.startsWith("/")
 				? servletCtx.getResource(location)
-				: new URL(location);
+				: new URI(location).toURL();
 				
 			ConfigContext ctx = new ConfigContext();
 			ctx.init(locURL);
 			return ctx;
-		} catch(MalformedURLException muE) {
+		} catch(MalformedURLException | URISyntaxException muE) {
 			throw new ConfigurationException("invalid configuration file location " + location, muE);
 		}
 	}
