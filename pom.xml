@@ -138,6 +138,12 @@
                             <report>javadoc</report>
                         </reports>
                     </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
                 </reportSets>
             </plugin>
         </plugins>
@@ -248,6 +254,11 @@
             <name>CLARIN Nexus Repository</name>
             <url>https://nexus.clarin.eu/content/repositories/Clarin</url>
         </repository>
+
+        <site>
+            <id>website</id>
+            <url>https://aai.mpg.de/</url>
+        </site>
     </distributionManagement>
 
     <repositories>
